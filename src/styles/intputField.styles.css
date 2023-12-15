@@ -1,0 +1,8 @@
+#sub-btn {
+  box-shadow: 0 0 4px 2px rgba(0, 0, 0, 0.4);
+}
+
+#sub-btn:active {
+  box-shadow: none;
+  transition-duration: 200ms;
+}

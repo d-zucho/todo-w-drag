@@ -1,16 +1,36 @@
-const InputField = () => {
+import { useRef } from 'react'
+
+interface Props {
+  todo: string
+  setTodo: React.Dispatch<React.SetStateAction<string>>
+  handleAddTask: (e: React.FormEvent) => void
+}
+
+const InputField: React.FC<Props> = ({ todo, setTodo, handleAddTask }) => {
+  const inputRef = useRef<HTMLInputElement>(null)
+
   return (
-    <form className='flex relative w-[90%] items-center mx-auto max-w-4xl'>
+    <form
+      onSubmit={(e) => {
+        handleAddTask(e)
+        inputRef.current?.blur()
+      }}
+      className='flex relative w-[90%] items-center mx-auto max-w-4xl'
+    >
       {/* <div clas> */}
       <input
         id='task'
         type='text'
+        value={todo}
+        ref={inputRef}
+        onChange={(e) => setTodo(e.target.value)}
         placeholder='Enter a task'
-        className='w-full px-4 text-2xl py-3 shadow-inner border-none outline-slate-200 rounded-full focus:shadow-[0_0_10px_1000px_rgba(0,0,0,0.3)] focus:outline-none'
+        className='w-full px-4 text-2xl py-3.5 shadow-inner border-none outline-slate-200 rounded-full focus:shadow-[0_0_10px_1000px_rgba(0,0,0,0.3)] focus:outline-none'
       />
       <button
         type='submit'
-        className='absolute w-[50px] h-[50px] m-3 bg-[#2f74c0] text-white border-none transition-all rounded-full font-black text-lg active:scale-105 active:shadow-md -right-1'
+        id='sub-btn'
+        className='absolute w-[50px] h-[50px] m-3 bg-[#2f74c0] text-white border-none transition-all rounded-full font-black text-lg -right-1 hover:bg-[#388ae2] active:scale-95 duration-200 active:shadow-none shadow-[0_0_4px_3px_rgba(0,0,0,0.3)] '
       >
         Go
       </button>
