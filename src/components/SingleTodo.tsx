@@ -10,18 +10,33 @@ interface Props {
 }
 
 const SingleTodo: React.FC<Props> = ({ todo, todoList, setTodoList }) => {
+  const handleComplete = (id: number) => {
+    setTodoList(
+      todoList.map((todo) => {
+        if (todo.id === id) {
+          return { ...todo, completed: !todo.completed }
+        }
+        return todo
+      })
+    )
+  }
   return (
     <form
       id='single-todo'
-      key={todo.id}
       className={classNames(
-        'w-full md:w-[45%] xl:w-[30%] p-5 rounded-md flex items-center justify-between',
-        todo.completed ? 'bg-green-500 ' : 'bg-yellow-400'
+        'w-full md:w-[45%] xl:w-[30%] p-5 rounded-md flex items-center justify-between transition-all ease-in-out duration-500',
+        !todo.completed ? 'bg-green-500 ' : 'bg-yellow-400'
       )}
     >
-      <span className='p-1.5 border-none text-xl flex-1 focus:outline-none'>
-        {todo.todo}
-      </span>
+      {todo.completed ? (
+        <span className='p-1.5 border-none text-xl flex-1 focus:outline-none'>
+          {todo.todo}
+        </span>
+      ) : (
+        <s className='p-1.5 border-none text-xl flex-1 focus:outline-none'>
+          {todo.todo}
+        </s>
+      )}
 
       {/* Icons Start */}
       <div id='icons' className='flex'>
@@ -32,7 +47,7 @@ const SingleTodo: React.FC<Props> = ({ todo, todoList, setTodoList }) => {
           <AiFillDelete />
         </span>
         <span className='todo-icon'>
-          <MdDone />
+          <MdDone onClick={() => handleComplete(todo.id as number)} />
         </span>
       </div>
       {/* Icons End */}
