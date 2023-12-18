@@ -1,1 +1,30 @@
 @import url('https://fonts.googleapis.com/css2?family=Neucha&display=swap');
+.App {
+  min-width: 320px;
+}
+
+.todo-icon {
+  margin-left: 10px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.todo-list-section {
+  margin: 0 auto;
+  margin-top: 20px;
+  display: flex;
+  gap: 1rem;
+  justify-content: space-evenly;
+  width: 90%;
+  flex-wrap: wrap;
+}
+/* 
+@media (max-width: 700px) {
+  #task {
+    width: 95%;
+  }
+
+  #signle-todo {
+    width: 100%;
+  }
+} */

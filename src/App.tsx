@@ -23,14 +23,15 @@ const App: React.FC = () => {
   return (
     <div className='App w-screen h-screen bg-[#2f74c0] flex flex-col mx-auto'>
       <Header />
-      <div className='max-w-screen-xl w-full px-4 md:px-8 mx-auto'>
+      <div className='max-w-screen-xl relative w-full px-4 md:px-8 mx-auto'>
         <InputField
           todo={todo}
           setTodo={setTodo}
           handleAddTask={handleAddTask}
         />
-
-        <TodoList todoList={todoList} setTodoList={setTodoList} />
+        <div className='mx-auto'>
+          <TodoList todoList={todoList} setTodoList={setTodoList} />
+        </div>
       </div>
     </div>
   )

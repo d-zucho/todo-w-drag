@@ -8,7 +8,7 @@ interface Props {
 
 const TodoList: React.FC<Props> = ({ todoList, setTodoList }: Props) => {
   return (
-    <section className='todos flex flex-wrap justify-evenly w-[90%]'>
+    <section className='todo-list-section'>
       {todoList.map((todo) => (
         <SingleTodo
           todo={todo}

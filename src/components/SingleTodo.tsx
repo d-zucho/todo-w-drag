@@ -12,28 +12,30 @@ interface Props {
 const SingleTodo: React.FC<Props> = ({ todo, todoList, setTodoList }) => {
   return (
     <form
+      id='single-todo'
       key={todo.id}
       className={classNames(
-        'flex rounded-md p-5 mt-4 items-center bg-yellow-400',
-        todo.completed && 'bg-green-500'
+        'w-full md:w-[45%] xl:w-[30%] p-5 rounded-md flex items-center justify-between',
+        todo.completed ? 'bg-green-500 ' : 'bg-yellow-400'
       )}
     >
-      <span className='p-1.5 border-none text-xl flex-1 mr-5'>{todo.todo}</span>
+      <span className='p-1.5 border-none text-xl flex-1 focus:outline-none'>
+        {todo.todo}
+      </span>
 
       {/* Icons Start */}
       <div id='icons' className='flex'>
-        <span>
+        <span className='todo-icon'>
           <AiFillEdit />
         </span>
-        <span>
+        <span className='todo-icon'>
           <AiFillDelete />
         </span>
-        <span>
+        <span className='todo-icon'>
           <MdDone />
         </span>
       </div>
       {/* Icons End */}
-      <input type='checkbox' name='compelted' id='completed' />
     </form>
   )
 }
